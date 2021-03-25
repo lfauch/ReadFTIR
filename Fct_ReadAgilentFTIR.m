@@ -89,7 +89,7 @@ function [data,wavenumbers] = Fct_ReadAgilentFTIR(Path,fichier)
 	for y = 1:tiles_in_y_dir
 		for x = 1:tiles_in_x_dir
 			current_extn = sprintf('_%04d_%04d.dmd', x-1, y-1);
-			tempfilename = fullfile(pathstr,[name, current_extn]);
+			tempfilename = fullfile(pathstr,[nom, current_extn]);
 			[fid, message] = fopen(tempfilename, 'r', 'l'); 
 			if(fid == -1) 
 				disp(['Dmd file reading: ', tempfilename]);
@@ -109,4 +109,5 @@ function [data,wavenumbers] = Fct_ReadAgilentFTIR(Path,fichier)
 		end;
 	end;
 	data = double(data);
+	wavenumbers = wavenumbers.';
 	
